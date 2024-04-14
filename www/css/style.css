@@ -1,0 +1,375 @@
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+  "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  background-color: #002a80;
+}
+
+.probootstrap-navbar .navbar-nav > li > a {
+  padding: 3rem 0;
+}
+
+.hero {
+  background-color: white;
+  height: 100vh;
+  padding: 0 5rem;
+}
+
+.hero .probootstrap-heading h1, .hero .probootstrap-heading h3, .hero .probootstrap-heading h2 {
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0.71);
+}
+
+.hero .probootstrap-heading h2 {
+  line-height: 1.2;
+}
+
+.hero .overlay {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero .hero-img-container {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5rem 0;
+}
+
+.hero .hero-img-container img {
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.tertiary-heading {
+  font-family: "Pinyon Script", serif;
+  color: #736e6e;
+  margin: 0;
+  padding: 0;
+  letter-spacing: .05em;
+  position: relative;
+  line-height: 40px;
+  font-style: italic;
+}
+
+.hero-bg {
+  height: 600px;
+}
+
+.section-heading {
+  font-family: "Pinyon Script", serif;
+  color: rgba(59, 112, 56, 0.7);
+  margin: 0;
+  padding: 0;
+  font-size: 6rem;
+  font-weight: bold;
+}
+
+.section-bg-overlay {
+  background:url(../img/custom/bg/bg_section.png);
+  background-size:cover;
+}
+
+.font-white {
+  color: white;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.flex-column {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.glass-box {
+  width: 350px;
+  height: 350px;
+  padding: 1rem 3rem;
+  border-radius: 10%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.glass-box > h3 {
+  color: rgba(59, 112, 56);
+}
+
+.margin-bottom {
+  margin-bottom: 5rem;
+}
+
+.padding-top {
+  padding-top: 3rem;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup-overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 10rem auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: rgba(59, 112, 56);
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.popup h3 {
+  margin-top: 0;
+  color: rgba(59, 112, 56);
+  width: 95%;
+}
+
+.popup ul {
+  margin-bottom: 0;
+}
+
+.popup img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-details p {
+  margin-bottom: 1rem;
+}
+
+.contact-details > iframe {
+  width: 100%;
+}
+
+#valueInfo > .flex-container, #serviceInfo > .flex-container {
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#serviceInfo > .flex-container, #projectInfo .projects-container > .flex-container, #profiles .container.flex-container {
+  flex-wrap: wrap;
+}
+
+#serviceInfo > .flex-container > div, #profiles .container.flex-container > div {
+  width: 50%;
+  padding: 10px;
+}
+
+#projectInfo .projects-container > .flex-container > div {
+  width: 33%;
+  padding: 10px;
+}
+
+#serviceInfo > .flex-container > div:nth-child(odd) .glass-box, #profiles .container.flex-container > div:nth-child(odd) .glass-box {
+  margin-left: auto;
+}
+
+#serviceInfo > .flex-container > div:nth-child(even) .glass-box, #profiles .container.flex-container > div:nth-child(even) {
+  margin-right: auto;
+}
+
+#projectInfo .projects-container > .flex-container > div .glass-box {
+  margin: auto;
+}
+
+#projectInfo .glass-box {
+  width: 25rem;
+  height: 25rem;
+  padding: 2rem;
+}
+
+#projectInfo .probootstrap-heading {
+  text-align: left;
+}
+
+#projectInfo #mechProjectInfo .glass-box {
+  width: 25rem;
+  height: 15rem;
+  padding: 2rem;
+}
+
+#profiles .probootstrap-heading {
+  padding: 0 15px;
+}
+
+#profiles .glass-box {
+  padding: 1rem;
+}
+
+#profiles .glass-box h5 {
+  color: rgba(59, 112, 56);
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+#profiles .glass-box p {
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#profiles .glass-box p:last-child {
+  font-size: 10px;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+
+#profiles .glass-box img {
+  border-radius: 25px;
+  height: 75%;
+  min-height: 75%;
+  width: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 0.5rem;
+}
+
+#projectInfo .glass-box p {
+  color: rgba(59, 112, 56);
+  margin-bottom: 1rem;
+}
+
+#projectInfo .glass-box span {
+  font-style: italic;
+}
+
+hr {
+  margin: 5rem 0;
+}
+
+@media screen and (max-width: 700px){
+  .hero {
+    padding: 0;
+    position: relative;
+  }
+
+  .hero .probootstrap-heading {
+    z-index: 1;
+  }
+
+  .hero .hero-img-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+  }
+
+  .section-heading {
+    font-size: 4rem;
+  }
+
+  .box{
+    width: 70%;
+  }
+
+  .popup{
+    width: 70%;
+  }
+
+  .popup h3 {
+    font-size: 20px;
+    width: 90%;
+  }
+
+  .popup img {
+    width: 100% !important;
+  }
+
+  .probootstrap-content {
+    padding-bottom: 1rem;
+  }
+
+  #valueInfo .flex-container, #serviceInfo .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #valueInfo .flex-container .glass-box, #serviceInfo .flex-container .glass-box {
+    margin-bottom: 15px;
+  }
+
+  #serviceInfo > .flex-container > div, #projectInfo .projects-container > .flex-container > div, #profiles .container.flex-container > div {
+    width: 100%;
+  }
+
+  #serviceInfo > .flex-container > div .glass-box, #profiles .container.flex-container > div .glass-box {
+    margin: auto;
+  }
+
+  #projectInfo .probootstrap-heading {
+    text-align: center;
+  }
+
+  .glass-box {
+    width: 320px;
+    height: 320px;
+  }
+
+  .glass-box h3 {
+    font-size: 24px;
+  }
+
+  .glass-box span {
+    font-size: 13px;
+  }
+
+  .contact-details:first-child {
+    margin-bottom: 5rem;
+  }
+
+  .contact-details {
+    text-align: center;
+  }
+}
