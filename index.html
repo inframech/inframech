@@ -622,3 +622,20 @@
 
 </body>
 </html>
+
+<script>
+// Close popups when ESC key is pressed
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+        // Check if any popup is currently open
+        const openPopup = document.querySelector('.popup-overlay:target');
+        if (openPopup) {
+            // Navigate to the parent section to close the popup
+            const closeLink = openPopup.querySelector('.close');
+            if (closeLink) {
+                window.location.hash = closeLink.getAttribute('href');
+            }
+        }
+    }
+});
+</script>
