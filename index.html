@@ -343,7 +343,7 @@
 
                 <div style="padding-top: 3rem">
                     <p><b>Mobile:</b><a href="tel:+94702108784"> +94 70 210 8784</a></p>
-                    <p><b>Email:</b><a href="mailto:inframechsl@gmail.com"> inframechsl@gmail.com</a></p>
+                    <p><b>Email:</b><a href="#" data-email="aW5mcmFtZWNoc2xAZ21haWwuY29t">Loading...</a></p>
                     <p><b>Address:</b> 204/D/1, Samupakara Mawatha, Honnanthara, Piliyandala</p>
                 </div>
             </div>
@@ -620,8 +620,31 @@
 <script src="js/custom.min.js"></script>
 <script src="js/main.js"></script>
 
-</body>
-</html>
+<script>
+(function() {
+    function decodeEmail(encoded) {
+        return atob(encoded);
+    }
+    
+    function initEmailLinks() {
+        const emailLinks = document.querySelectorAll('[data-email]');
+        
+        emailLinks.forEach(function(link) {
+            const encodedEmail = link.getAttribute('data-email');
+            const email = decodeEmail(encodedEmail);
+            
+            link.href = 'mailto:' + email;
+            link.textContent = email;
+        });
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initEmailLinks);
+    } else {
+        initEmailLinks();
+    }
+})();
+</script>
 
 <script>
 // Close popups when ESC key is pressed
@@ -639,3 +662,6 @@ document.addEventListener('keydown', function(event) {
     }
 });
 </script>
+
+</body>
+</html>
