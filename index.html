@@ -756,11 +756,8 @@
                     const phone = decode(encodedPhone);
 
                     if (phone) {
-                        // Remove spaces and format for tel: link
                         const telLink = phone.replace(/\s+/g, '');
                         link.href = 'tel:' + telLink;
-
-                        // Simple display - just show the decoded phone with a space at start
                         link.textContent = ' ' + phone;
                     } else {
                     }
