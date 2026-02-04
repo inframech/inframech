@@ -1826,24 +1826,6 @@ pre code {
     margin-left: auto
 }
 
-@media (min-width: 768px) {
-    .container {
-        width: 750px
-    }
-}
-
-@media (min-width: 992px) {
-    .container {
-        width: 970px
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px
-    }
-}
-
 .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
@@ -16662,7 +16644,7 @@ a:hover, a:focus, a:active {
     transition: .3s all;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 870px) {
     .probootstrap-navbar {
         background: white;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
@@ -17218,7 +17200,7 @@ section[data-section="menu"] {
 }
 
 .probootstrap-section {
-    padding: 7em 0;
+    padding: 7em 2em;
 }
 
 .probootstrap-section.probootstrap-border-top {
@@ -17240,7 +17222,7 @@ section[data-section="menu"] {
 
 @media screen and (max-width: 768px) {
     .probootstrap-section {
-        padding: 3em 0;
+        padding: 3em 1em;
     }
 }
 
@@ -17255,7 +17237,8 @@ section[data-section="menu"] {
 @media screen and (max-width: 768px) {
     .probootstrap-section-bg {
         padding: 3em 0;
-        height: 200px;
+        min-height: 200px;
+        height: fit-content;
     }
 }
 
@@ -17270,7 +17253,7 @@ section[data-section="menu"] {
 }
 
 .probootstrap-section-bg .probootstrap-heading {
-    margin-top: 250px;
+    margin-top: 5rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -18375,6 +18358,8 @@ section[data-section="menu"] {
     margin: 0;
     padding: 0;
     font-size: 80px;
+    text-align: center;
+
 }
 
 @media screen and (max-width: 768px) {

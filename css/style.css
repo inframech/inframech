@@ -17,6 +17,10 @@ body::before {
   background-color: white;
   height: 100vh;
   padding: 0 5rem;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .hero .probootstrap-heading h1, .hero .probootstrap-heading h3, .hero .probootstrap-heading h2 {
@@ -37,8 +41,6 @@ body::before {
 
 .hero .hero-img-container {
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
   padding: 5rem 0;
 }
 
@@ -56,6 +58,7 @@ body::before {
   position: relative;
   line-height: 40px;
   font-style: italic;
+  text-align: center;
 }
 
 .hero-bg {
@@ -95,10 +98,12 @@ body::before {
 }
 
 .glass-box {
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  max-width: 350px;
+  height: fit-content;
+  min-height: 350px;
   padding: 1rem 3rem;
-  border-radius: 10%;
+  border-radius: 2.5rem;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -190,107 +195,66 @@ body::before {
   width: 100%;
 }
 
-#valueInfo > .flex-container, #serviceInfo > .flex-container {
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-#serviceInfo > .flex-container, #projectInfo .projects-container > .flex-container, #profiles .container.flex-container {
+#serviceInfo .container.flex-container,
+#valueInfo .container.flex-container,
+#projectInfo .container.flex-container,
+#bricscadProductInfo .container.flex-container,
+#bricscadPartnerInfo .container.flex-container {
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-#serviceInfo > .flex-container > div, #profiles .container.flex-container > div {
-  width: 50%;
+#serviceInfo .container.flex-container > div,
+#valueInfo .container.flex-container > div,
+#projectInfo .container.flex-container > div,
+#bricscadPartnerInfo .container.flex-container > div,
+#bricscadProductInfo .container.flex-container > div {
   padding: 10px;
 }
 
-#projectInfo .projects-container > .flex-container > div {
-  width: 33%;
-  padding: 10px;
-}
-
-#serviceInfo > .flex-container > div:nth-child(odd) .glass-box, #profiles .container.flex-container > div:nth-child(odd) .glass-box {
-  margin-left: auto;
-}
-
-#serviceInfo > .flex-container > div:nth-child(even) .glass-box, #profiles .container.flex-container > div:nth-child(even) {
-  margin-right: auto;
-}
-
-#projectInfo .projects-container > .flex-container > div .glass-box {
-  margin: auto;
-}
-
-#projectInfo .glass-box {
-  width: 25rem;
-  height: 25rem;
-  padding: 2rem;
-}
-
-#projectInfo .probootstrap-heading {
-  text-align: left;
-}
-
-#projectInfo #mechProjectInfo .glass-box {
-  width: 25rem;
-  height: 15rem;
-  padding: 2rem;
-}
-
-#profiles .probootstrap-heading {
-  padding: 0 15px;
-}
-
-#profiles .glass-box {
-  padding: 1rem;
-}
-
-#profiles .glass-box h5 {
-  color: rgba(59, 112, 56);
-  font-weight: bold;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-#profiles .glass-box p {
-  margin-bottom: 0;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-#profiles .glass-box p:last-child {
-  font-size: 10px;
-  margin-bottom: 0;
-  line-height: 1.1;
-}
-
-#profiles .glass-box img {
-  border-radius: 25px;
-  height: 75%;
-  min-height: 75%;
-  width: 100%;
-  min-width: 100%;
-  object-fit: cover;
-  object-position: top;
-  margin-bottom: 0.5rem;
-}
-
-#projectInfo .glass-box p {
+#projectInfo .glass-box p,
+#bricscadProductInfo .glass-box p,
+#bricscadPartnerInfo .glass-box p {
   color: rgba(59, 112, 56);
   margin-bottom: 1rem;
-}
-
-#projectInfo .glass-box span {
-  font-style: italic;
 }
 
 hr {
   margin: 5rem 0;
 }
 
-@media screen and (max-width: 700px){
+#bricscadIntro span {
+  font-size: 2rem;
+}
+
+ul.unordered-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+ul.unordered-list > li {
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  background: rgba(144, 141, 141, 0.08);
+  border-radius: 8px;
+  font-size: 1.1em;
+}
+
+.glass-box ul.unordered-list > li {
+  font-size: inherit;
+  line-height: initial;
+}
+
+ul.unordered-list > li > span {
+  color: rgba(59, 112, 56, 0.7);
+  font-weight: bold;
+}
+
+@media screen and (max-width: 870px){
   .hero {
     padding: 0;
-    position: relative;
+    justify-content: center;
   }
 
   .hero .probootstrap-heading {
@@ -300,10 +264,23 @@ hr {
   .hero .hero-img-container {
     height: 100%;
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     padding: 0;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero .hero-img-container img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero .overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
   }
 
   .section-heading {
@@ -331,30 +308,34 @@ hr {
     padding-bottom: 1rem;
   }
 
-  #valueInfo .flex-container, #serviceInfo .flex-container {
+  #valueInfo .container.flex-container,
+  #serviceInfo .container.flex-container,
+  #projectInfo .container.flex-container,
+  #bricscadProductInfo .container.flex-container,
+  #bricscadPartnerInfo .container.flex-container {
     flex-direction: column;
     align-items: center;
   }
 
-  #valueInfo .flex-container .glass-box, #serviceInfo .flex-container .glass-box {
-    margin-bottom: 15px;
-  }
-
-  #serviceInfo > .flex-container > div, #projectInfo .projects-container > .flex-container > div, #profiles .container.flex-container > div {
+  #serviceInfo .container.flex-container > div,
+  #projectInfo .container.flex-container > div,
+  #bricscadProductInfo .container.flex-container > div,
+  #bricscadPartnerInfo .container.flex-container > div,
+  #valueInfo .container.flex-container > div {
     width: 100%;
   }
 
-  #serviceInfo > .flex-container > div .glass-box, #profiles .container.flex-container > div .glass-box {
+  #serviceInfo .container.flex-container > div .glass-box,
+  #projectInfo .container.flex-container > div .glass-box,
+  #bricscadProductInfo .container.flex-container > div .glass-box,
+  #bricscadPartnerInfo .container.flex-container > div .glass-box,
+  #valueInfo .container.flex-container > div .glass-box {
     margin: auto;
   }
 
-  #projectInfo .probootstrap-heading {
-    text-align: center;
-  }
-
   .glass-box {
-    width: 320px;
-    height: 320px;
+    max-width: 320px;
+    min-height: 320px;
   }
 
   .glass-box h3 {
