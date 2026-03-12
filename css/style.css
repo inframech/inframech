@@ -1,200 +1,499 @@
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-  "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  background-color: #002a80;
+/* ============================================================
+   InfraMech — Modern Redesign
+   Professional, clean, engineering-grade aesthetic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@600;700;800&display=swap');
+
+/* ============================================================
+   Design Tokens
+   ============================================================ */
+:root {
+  --green:           #16a34a;
+  --green-dark:      #15803d;
+  --green-light:     #dcfce7;
+  --green-glow:      rgba(22, 163, 74, 0.15);
+  --navy:            #0b1120;
+  --navy-mid:        #111827;
+  --navy-surface:    #1a2335;
+  --sky:             #0ea5e9;
+
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --text-inverse:    rgba(255, 255, 255, 0.90);
+  --text-inverse-m:  rgba(255, 255, 255, 0.65);
+
+  --surface:         #ffffff;
+  --surface-soft:    #f8fafc;
+  --border:          #e2e8f0;
+  --border-dark:     rgba(255, 255, 255, 0.08);
+
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-head:    'Poppins', system-ui, -apple-system, sans-serif;
+
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+  --r-pill: 100px;
+
+  --sh-sm: 0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --sh-md: 0 4px 16px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
+  --sh-lg: 0 12px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.05);
+  --sh-green: 0 8px 32px rgba(22, 163, 74, 0.20);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --tx: all 0.28s var(--ease);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Reset root font size — styles-merged.css sets html to 10px (62.5%), which breaks all rem values */
+html { font-size: 16px !important; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* suppress the probootstrap dev banner */
+body::before { display: none !important; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+}
+
+a {
+  color: var(--green);
+  transition: var(--tx);
+}
+a:hover { color: var(--green-dark); }
+
+hr {
+  margin: 3.5rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+.probootstrap-navbar {
+  background: rgba(11, 17, 32, 0.96) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.30);
+  padding: 0;
+  transition: var(--tx);
+}
+
+.probootstrap-navbar .navbar-brand {
+  padding: 10px 0;
+  height: auto;
+}
+.probootstrap-navbar .navbar-brand img {
+  height: 46px;
+  border-radius: 6px;
 }
 
 .probootstrap-navbar .navbar-nav > li > a {
-  padding: 3rem 0;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  padding: 26px 14px !important;
+  position: relative;
+  transition: var(--tx);
+  background: transparent !important;
 }
 
+.probootstrap-navbar .navbar-nav > li > a::after {
+  content: '';
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  transition: width 0.25s var(--ease);
+}
+
+.probootstrap-navbar .navbar-nav > li > a:hover,
+.probootstrap-navbar .navbar-nav > li.active > a {
+  color: #ffffff !important;
+}
+.probootstrap-navbar .navbar-nav > li > a:hover::after,
+.probootstrap-navbar .navbar-nav > li.active > a::after {
+  width: 20px;
+}
+
+/* scrolled state (class toggled by custom.js navbarState) */
+.probootstrap-navbar.scrolled {
+  background: rgba(8, 14, 28, 0.99) !important;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* mobile toggle */
+.probootstrap-navbar .navbar-toggle {
+  border-color: rgba(255,255,255,0.2);
+  margin-top: 14px;
+}
+.probootstrap-navbar .navbar-toggle .icon-bar {
+  background-color: rgba(255,255,255,0.7);
+}
+
+
+/* ============================================================
+   Hero
+   ============================================================ */
 .hero {
-  background-color: white;
+  background: linear-gradient(150deg, #f0fdf4 0%, #ffffff 45%, #f0f9ff 100%);
   height: 100vh;
-  padding: 0 5rem;
-  position: relative;
+  min-height: 620px;
+  padding: 80px 5rem 0;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.hero .probootstrap-heading h1, .hero .probootstrap-heading h3, .hero .probootstrap-heading h2 {
-  padding: 3px;
-  background-color: rgba(255, 255, 255, 0.71);
-}
-
-.hero .probootstrap-heading h2 {
-  line-height: 1.2;
-}
-
-.hero .overlay {
-  height: inherit;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-}
-
-.hero .hero-img-container {
-  height: 100%;
-  padding: 5rem 0;
-}
-
-.hero .hero-img-container img {
-  object-fit: contain;
-  opacity: 0.9;
-}
-
-.tertiary-heading {
-  font-family: "Pinyon Script", serif;
-  color: #736e6e;
-  margin: 0;
-  padding: 0;
-  letter-spacing: .05em;
+  align-items: center;
+  gap: 5rem;
   position: relative;
-  line-height: 40px;
-  font-style: italic;
-  text-align: center;
+  overflow: hidden;
 }
 
-.hero-bg {
-  height: 600px;
+/* decorative blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(22, 163, 74, 0.09) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  left: -8%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.section-heading {
-  font-family: "Pinyon Script", serif;
-  color: rgba(59, 112, 56, 0.7);
+/* hero heading block */
+.hero .overlay.probootstrap-heading {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 520px;
+}
+
+/* override old inline background on h1/h2/h3 in hero */
+.hero .probootstrap-heading h1,
+.hero .probootstrap-heading h2,
+.hero .probootstrap-heading h3 {
+  background: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.hero-img-container {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 520px;
+  height: 62vh;
+  padding: 0 !important;
+}
+.hero-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 56px rgba(22, 163, 74, 0.14));
+}
+
+/* hero eyebrow */
+.hero .tertiary-heading:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-style: normal;
+  text-align: left;
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+.hero .tertiary-heading:first-child::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* "with" connector line */
+.hero .tertiary-heading:nth-child(2) {
+  display: none; /* hide the "with" text — it looks outdated */
+}
+
+/* hero brand name — needs high specificity to beat styles-merged.css */
+.hero .probootstrap-heading .primary-heading,
+.probootstrap-heading h1.primary-heading,
+.primary-heading {
+  font-family: var(--font-head) !important;
+  font-size: 4rem !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+  text-align: left !important;
+  margin: 0.35rem 0 1.25rem !important;
+  padding: 0 !important;
+  color: transparent !important;
+  background: linear-gradient(135deg, var(--green) 0%, #0d9488 60%, var(--sky) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* hero subtitle (injected via HTML update) */
+.hero-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 440px;
   margin: 0;
-  padding: 0;
-  font-size: 6rem;
-  font-weight: bold;
 }
 
-.section-bg-overlay {
-  background:url(../img/custom/bg/bg_section.png);
-  background-size:cover;
+
+/* ============================================================
+   Section headings — replace Pinyon Script 6rem
+   ============================================================ */
+.section-heading {
+  font-family: var(--font-head) !important;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.18 !important;
+  color: var(--text-primary) !important;
+  margin: 0 0 1rem !important;
+  padding: 0 !important;
 }
 
-.font-white {
-  color: white;
+/* section heading on dark sections */
+.bg-primary .section-heading,
+.probootstrap-section-bg .section-heading {
+  color: #ffffff !important;
 }
 
-.flex-container {
-  display: flex;
+/* tertiary heading (section sub-label) */
+.tertiary-heading {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-style: normal;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+.bg-primary .tertiary-heading {
+  color: rgba(255, 255, 255, 0.45);
 }
 
-.flex-row {
-  flex-direction: row;
-  justify-content: space-evenly;
+
+/* ============================================================
+   Section base padding
+   ============================================================ */
+.probootstrap-section {
+  padding: 88px 0;
+}
+.probootstrap-section-bg,
+section.bg-primary:not(.probootstrap-copyright) {
+  padding: 88px 0;
 }
 
-.flex-column {
-  flex-direction: column;
-  justify-content: space-between;
+
+/* ============================================================
+   bg-primary — dark navy
+   ============================================================ */
+.bg-primary {
+  background-color: var(--navy-mid) !important;
+  color: var(--text-inverse) !important;
+}
+.bg-primary h1, .bg-primary h2, .bg-primary h3,
+.bg-primary h4, .bg-primary p, .bg-primary span,
+.bg-primary li, .bg-primary b {
+  color: inherit;
+}
+.bg-primary b { color: #ffffff; }
+.bg-primary hr { border-color: var(--border-dark); }
+.bg-primary a { color: var(--green); }
+.bg-primary a:hover { color: #4ade80; }
+
+
+/* ============================================================
+   Section bg overlay (values / services / projects banners)
+   ============================================================ */
+.probootstrap-section-bg.section-bg-overlay {
+  position: relative;
+  background: var(--navy) !important;
+  overflow: hidden;
+}
+.probootstrap-section-bg.section-bg-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(22, 163, 74, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 50%, rgba(14, 165, 233, 0.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+.probootstrap-section-bg.section-bg-overlay .container {
+  position: relative;
+  z-index: 1;
 }
 
+
+/* ============================================================
+   Welcome section
+   ============================================================ */
+#welcome {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+#welcome .probootstrap-content span {
+  display: block;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.82;
+}
+
+
+/* ============================================================
+   About section
+   ============================================================ */
+#about .probootstrap-content span {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+#about img.img-responsive {
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-lg);
+}
+
+
+/* ============================================================
+   Cards  (was .glass-box)
+   ============================================================ */
 .glass-box {
   width: 100%;
-  max-width: 350px;
+  max-width: 310px;
+  min-height: 260px;
   height: fit-content;
-  min-height: 350px;
-  padding: 1rem 3rem;
-  border-radius: 2.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-align: center;
+  padding: 1.75rem 1.875rem;
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-md);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), border-color 0.28s var(--ease);
 }
 
-.glass-box > h3 {
-  color: rgba(59, 112, 56);
-}
-
-.margin-bottom {
-  margin-bottom: 5rem;
-}
-
-.padding-top {
-  padding-top: 3rem;
-}
-
-.popup-overlay {
-  position: fixed;
+/* accent top stripe */
+.glass-box::before {
+  content: '';
+  position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--sky) 100%);
   opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+.glass-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sh-lg);
+  border-color: var(--border);
+}
+.glass-box:hover::before { opacity: 1; }
+
+/* card typography */
+.glass-box > h3,
+.glass-box > div > h3 {
+  font-family: var(--font-head);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  margin-bottom: 0.625rem;
+  line-height: 1.3;
+}
+.glass-box > span,
+.glass-box > div > span,
+.glass-box > div > p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.72;
 }
 
-.popup-overlay:target {
-  visibility: visible;
-  opacity: 1;
+/* cards on dark bg */
+.bg-primary .glass-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: none;
+}
+.bg-primary .glass-box:hover {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.30);
+}
+.bg-primary .glass-box > h3,
+.bg-primary .glass-box > div > h3 {
+  color: #ffffff !important;
+}
+.bg-primary .glass-box > span,
+.bg-primary .glass-box > div > span {
+  color: rgba(255, 255, 255, 0.62);
 }
 
-.popup {
-  margin: 10rem auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 50%;
-  position: relative;
-  transition: all 5s ease-in-out;
-  z-index: 999;
-  max-height: 80vh;
-  overflow-y: auto;
-}
 
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: rgba(59, 112, 56);
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-
-.popup h3 {
-  margin-top: 0;
-  color: rgba(59, 112, 56);
-  width: 95%;
-}
-
-.popup ul {
-  margin-bottom: 0;
-}
-
-.popup img {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-details p {
-  margin-bottom: 1rem;
-}
-
-.contact-details > iframe {
-  width: 100%;
-}
-
+/* ============================================================
+   Card grids
+   ============================================================ */
 #serviceInfo .container.flex-container,
 #valueInfo .container.flex-container,
 #projectInfo .container.flex-container,
@@ -202,6 +501,7 @@ body::before {
 #bricscadPartnerInfo .container.flex-container {
   flex-wrap: wrap;
   justify-content: center;
+  gap: 1.25rem;
 }
 
 #serviceInfo .container.flex-container > div,
@@ -209,103 +509,378 @@ body::before {
 #projectInfo .container.flex-container > div,
 #bricscadPartnerInfo .container.flex-container > div,
 #bricscadProductInfo .container.flex-container > div {
-  padding: 10px;
+  padding: 0;
 }
 
 #projectInfo .glass-box p,
 #bricscadProductInfo .glass-box p,
 #bricscadPartnerInfo .glass-box p {
-  color: rgba(59, 112, 56);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.375rem;
+}
+
+
+/* ============================================================
+   Popup button  (Read more…)
+   ============================================================ */
+.popup-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1.125rem;
+  padding: 7px 16px;
+  background: var(--green-light);
+  color: var(--green-dark) !important;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  text-decoration: none !important;
+  transition: var(--tx);
+  width: fit-content;
+  line-height: 1.4;
+}
+.popup-button::after {
+  content: '→';
+  transition: transform 0.2s var(--ease);
+}
+.popup-button:hover {
+  background: var(--green);
+  color: #ffffff !important;
+}
+.popup-button:hover::after { transform: translateX(3px); }
+
+/* dark bg variant */
+.bg-primary .popup-button {
+  background: rgba(22, 163, 74, 0.18);
+  color: #6ee7a1 !important;
+}
+.bg-primary .popup-button:hover {
+  background: var(--green);
+  color: #ffffff !important;
+}
+
+
+/* ============================================================
+   Popup / modal
+   ============================================================ */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 10, 24, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.popup-overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  width: 100%;
+  max-width: 580px;
+  max-height: 86vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+  animation: popupIn 0.28s var(--ease) forwards;
+  border: 1px solid var(--border);
+}
+
+@keyframes popupIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+.popup .close {
+  position: absolute;
+  top: 1.125rem;
+  right: 1.375rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: var(--tx);
+  line-height: 1;
+  border: 1px solid var(--border);
+}
+.popup .close:hover {
+  background: var(--green-light);
+  color: var(--green-dark);
+  border-color: transparent;
+}
+
+.popup h3 {
+  font-family: var(--font-head);
+  font-size: 1.4375rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
   margin-bottom: 1rem;
+  padding-right: 2.25rem;
+  width: auto !important;
+  line-height: 1.25;
+}
+.popup span { font-size: 0.9375rem; line-height: 1.78; color: var(--text-secondary); }
+.popup p    { font-size: 0.9375rem; line-height: 1.78; color: var(--text-secondary); }
+
+.popup img {
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-sm);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-hr {
-  margin: 5rem 0;
-}
 
-#bricscadIntro span {
-  font-size: 2rem;
-}
-
+/* ============================================================
+   Unordered list (feature list)
+   ============================================================ */
 ul.unordered-list {
   list-style: none;
   padding: 0;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
-
 ul.unordered-list > li {
-  padding: 0.8rem;
-  margin: 0.5rem 0;
-  background: rgba(144, 141, 141, 0.08);
-  border-radius: 8px;
-  font-size: 1.1em;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.3rem 0;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: 0.9375rem;
+  line-height: 1.55;
 }
-
-.glass-box ul.unordered-list > li {
-  font-size: inherit;
-  line-height: initial;
-}
-
 ul.unordered-list > li > span {
-  color: rgba(59, 112, 56, 0.7);
-  font-weight: bold;
+  color: var(--green) !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
-@media screen and (max-width: 870px){
+/* dark bg variants */
+.bg-primary ul.unordered-list > li {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+}
+.bg-primary ul.unordered-list > li > span {
+  color: #4ade80 !important;
+}
+.glass-box ul.unordered-list > li {
+  font-size: 0.875rem;
+}
+
+
+/* ============================================================
+   Contact
+   ============================================================ */
+#contact .section-heading {
+  font-size: 2rem !important;
+}
+.contact-details p {
+  font-size: 0.9375rem;
+  margin-bottom: 0.625rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+.contact-details p b {
+  color: #4ade80;
+  font-weight: 600;
+}
+.contact-details a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+}
+.contact-details a:hover { color: #4ade80; }
+
+.contact-details > iframe {
+  width: 100%;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-md);
+  display: block;
+}
+
+
+/* ============================================================
+   BricsCAD CTA button
+   ============================================================ */
+#bricscadCTA a[href="#contact"],
+#bricscadCTA a[href*="contact"] {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 38px !important;
+  background: var(--green) !important;
+  color: #ffffff !important;
+  border-radius: var(--r-pill) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  box-shadow: var(--sh-green) !important;
+  transition: var(--tx) !important;
+  line-height: 1 !important;
+  letter-spacing: 0.01em;
+}
+#bricscadCTA a[href="#contact"]:hover,
+#bricscadCTA a[href*="contact"]:hover {
+  background: var(--green-dark) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 42px rgba(22, 163, 74, 0.28) !important;
+}
+
+
+/* ============================================================
+   BricsCAD logo
+   ============================================================ */
+#bricscad .padding-top img {
+  max-width: 260px;
+  width: 42%;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 16px rgba(255, 255, 255, 0.18));
+}
+
+#bricscadIntro span { font-size: 1.0625rem !important; }
+
+
+/* ============================================================
+   "Let's Build the Future" CTA banner content
+   ============================================================ */
+section.bg-primary .probootstrap-content p,
+section.bg-primary .probootstrap-content h4 {
+  color: var(--text-inverse);
+}
+section.bg-primary .probootstrap-content h4 b {
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.probootstrap-copyright {
+  background: #060d1a !important;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.probootstrap-copyright .copyright-text {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+
+/* ============================================================
+   Utility
+   ============================================================ */
+.font-white { color: #ffffff; }
+.margin-bottom { margin-bottom: 3rem; }
+.padding-top { padding-top: 1.75rem; }
+.flex-container { display: flex; }
+.flex-row { flex-direction: row; justify-content: space-evenly; }
+.flex-column { flex-direction: column; justify-content: space-between; }
+
+.probootstrap-content.padding { padding: 1.5rem 0; }
+.probootstrap-content span,
+.probootstrap-content p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.probootstrap-content h4 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   Responsive — tablet / mobile
+   ============================================================ */
+@media screen and (max-width: 991px) {
+  .section-heading { font-size: 2.125rem !important; }
+
+  /* collapse navbar bg on mobile */
+  .probootstrap-navbar .navbar-collapse {
+    background: rgba(11, 17, 32, 0.98);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 12px;
+  }
+  .probootstrap-navbar .navbar-nav > li > a {
+    padding: 12px 20px !important;
+  }
+  .probootstrap-navbar .navbar-nav > li > a::after { display: none; }
+}
+
+@media screen and (max-width: 870px) {
   .hero {
-    padding: 0;
+    padding: 80px 1.5rem 2.5rem;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    gap: 2.5rem;
     justify-content: center;
   }
 
-  .hero .probootstrap-heading {
-    z-index: 1;
-  }
-
-  .hero .hero-img-container {
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-
-  .hero .hero-img-container img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero .overlay {
-    position: relative;
-    z-index: 2;
+  .hero .overlay.probootstrap-heading {
+    max-width: 100%;
     text-align: center;
-    padding: 2rem;
+    order: 1;
+  }
+
+  .hero .tertiary-heading:first-child {
+    justify-content: center;
+  }
+
+  .hero-subtitle { margin: 0 auto; text-align: center; }
+
+  .hero-img-container {
+    max-width: 100%;
     width: 100%;
+    height: 44vw;
+    min-height: 220px;
+    order: 2;
   }
 
-  .section-heading {
-    font-size: 4rem;
+  .primary-heading { font-size: 2.75rem; }
+
+  .section-heading { font-size: 1.875rem !important; }
+
+  .glass-box {
+    max-width: 100%;
+    min-height: unset;
   }
 
-  .box{
-    width: 70%;
+  .popup {
+    padding: 1.625rem;
+    max-height: 88vh;
   }
+  .popup h3 { font-size: 1.25rem; }
 
-  .popup{
-    width: 70%;
-  }
-
-  .popup h3 {
-    font-size: 20px;
-    width: 90%;
-  }
-
-  .popup img {
-    width: 100% !important;
-  }
-
-  .probootstrap-content {
-    padding-bottom: 1rem;
+  .probootstrap-section,
+  .probootstrap-section-bg,
+  section.bg-primary:not(.probootstrap-copyright) {
+    padding: 64px 0;
   }
 
   #valueInfo .container.flex-container,
@@ -330,27 +905,17 @@ ul.unordered-list > li > span {
   #bricscadProductInfo .container.flex-container > div .glass-box,
   #bricscadPartnerInfo .container.flex-container > div .glass-box,
   #valueInfo .container.flex-container > div .glass-box {
-    margin: auto;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  .glass-box {
-    max-width: 320px;
-    min-height: 320px;
-  }
+  .contact-details:first-child { margin-bottom: 2.5rem; }
+  .contact-details { text-align: center; }
+}
 
-  .glass-box h3 {
-    font-size: 24px;
-  }
-
-  .glass-box span {
-    font-size: 13px;
-  }
-
-  .contact-details:first-child {
-    margin-bottom: 5rem;
-  }
-
-  .contact-details {
-    text-align: center;
-  }
+@media screen and (max-width: 480px) {
+  .primary-heading { font-size: 2.25rem; }
+  .section-heading { font-size: 1.625rem !important; }
+  .probootstrap-navbar .navbar-brand img { height: 38px; }
+  .popup { padding: 1.375rem; }
 }
