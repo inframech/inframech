@@ -737,7 +737,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <p class="copyright-text">&copy;
-                        <script>document.write(new Date().getFullYear());</script>
+                        <span id="copyright-year"></span>
+                        <script>document.getElementById('copyright-year').textContent=new Date().getFullYear();</script>
                         <b>InfraMech.</b>All rights reserved.
                     </p>
                 </div>
