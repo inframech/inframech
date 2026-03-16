@@ -15,13 +15,8 @@ Disallow: /*bricscadPopup*
 # Block direct access to image folders with project details
 Disallow: /img/custom/project/
 
-# Block administrative and configuration files
-Disallow: /admin/
-Disallow: /config/
+# Block version control directory
 Disallow: /.git/
-Disallow: /backup/
-Disallow: /*.sql
-Disallow: /*.log
 
 # Block common scraping bots and harvesters
 User-agent: EmailSiphon
